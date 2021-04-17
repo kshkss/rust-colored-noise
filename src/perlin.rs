@@ -108,7 +108,6 @@ impl PerlinNoise {
 
 #[cfg(test)]
 mod tests {
-    use itertools::Itertools;
     use super::*;
 
     #[test]
@@ -125,14 +124,4 @@ mod tests {
         let x = Array1::<f64>::linspace(0., 1., 100);
         x.map(|&v| PerlinNoise::new(200, 8).gen(&aview1(&[v])));
     }
-
-    #[test]
-    fn perlin2d() {
-        let x = Array1::<f64>::linspace(0., 1., 200);
-        let y = Array1::<f64>::linspace(0., 1., 200);
-        let _v : Array1<_> = x.iter().cartesian_product(y.iter()).map(|(&x, &y)| {
-            PerlinNoise::new(200, 8).gen(&aview1(&[x, y]))
-        }).collect();
-    }
 }
-
