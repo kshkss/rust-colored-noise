@@ -8,10 +8,16 @@ edition = "2018"
 
 [lib]
 name = "colored_noise"
+crate-type = ["lib", "cdylib"]
 
 [dependencies]
-ndarray = "0.15"
+ndarray = "0.14"
 itertools = "0.10"
+numpy = "0.13"
+
+[dependencies.pyo3]
+version = "0.13"
+features = ["extension-module"]
 
 [dev-dependencies]
 criterion = "0.3"
