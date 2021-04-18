@@ -6,13 +6,11 @@ use ndarray::prelude::*;
 fn perlin2d_bench(c: &mut Criterion) {
     c.bench_function("perlin noise 2d", |b| {
         b.iter(|| {
-            let x = Array1::<f64>::linspace(0., 1., 200);
-            let y = Array1::<f64>::linspace(0., 1., 200);
-            let _v: Array1<_> = x
-                .iter()
-                .cartesian_product(y.iter())
-                .map(|(&x, &y)| PerlinNoise::new(200, 8).gen(&aview1(&[x, y])))
-                .collect();
+            let x = PerlinNoise::new(2000000, 8).gen2d(200, 200);
+            let x = &x + 0.5 * &PerlinNoise::new(20000, 16).gen2d(200, 200);
+            let x = &x + 0.25 * &PerlinNoise::new(2000, 32).gen2d(200, 200);
+            let x = &x + 0.125 * &PerlinNoise::new(200, 64).gen2d(200, 200);
+            let x = &x + 0.0625 * &PerlinNoise::new(20, 128).gen2d(200, 200);
         })
     });
 }
