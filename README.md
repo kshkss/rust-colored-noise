@@ -1,2 +1,2 @@
-# rust-colored-noise
-Tools to generate sequences of colored noise
+# rust-perlin-noise
+Tools to generate perlin noise

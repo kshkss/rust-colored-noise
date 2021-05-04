@@ -1,5 +1,5 @@
 [package]
-name = "rust-colored-noise"
+name = "rust-perlin-noise"
 version = "0.1.0"
 authors = ["Akishika Issui <kshkss@users.noreply.github.com>"]
 edition = "2018"
@@ -7,20 +7,20 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "colored_noise"
+name = "perlin_noise"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]
+itertools = "0.10.0"
 ndarray = "0.14"
-itertools = "0.10"
-numpy = "0.13"
+numpy = "0.13.1"
 
 [dependencies.pyo3]
-version = "0.13"
+version = "0.13.2"
 features = ["extension-module"]
 
 [dev-dependencies]
-criterion = "0.3"
+criterion = "0.3.4"
 
 [[bench]]
 name = "perlin"
